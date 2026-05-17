@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victor PHAN — Portfolio Professionnel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --charcoal:      #1c1c1e;
+    --charcoal-mid:  #2a2a2d;
+    --charcoal-light:#3a3a3e;
+    --bordeaux:      #7a1f2e;
+    --bordeaux-mid:  #9b2335;
+    --bordeaux-light:#c0394a;
+    --bordeaux-pale: #f5e8ea;
+    --warm-white:    #f7f5f2;
+    --paper:         #efefec;
+    --text:          #1c1c1e;
+    --text-mid:      #4a4a50;
+    --text-light:    #7a7a82;
+    --border:        rgba(122,31,46,0.15);
+    --border-dark:   rgba(255,255,255,0.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'IBM Plex Sans',sans-serif;background:var(--warm-white);color:var(--text);overflow-x:hidden;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 5rem;background:rgba(28,28,30,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(122,31,46,0.3);}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--warm-white);letter-spacing:0.04em;}
+  .nav-logo span{color:var(--bordeaux-light);font-style:italic;}
+  .nav-links{display:flex;gap:2.8rem;list-style:none;}
+  .nav-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.72rem;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--bordeaux-light);}
+
+  /* HERO */
+  #hero{min-height:100vh;background:var(--charcoal);display:flex;align-items:center;padding:8rem 5rem 5rem;position:relative;overflow:hidden;}
+  #hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(-55deg,transparent,transparent 60px,rgba(122,31,46,0.025) 60px,rgba(122,31,46,0.025) 61px);}
+  .hero-glow{position:absolute;top:-100px;right:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(122,31,46,0.1) 0%,transparent 65%);pointer-events:none;}
+  .hero-content{position:relative;max-width:800px;}
+  .hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:2.2rem;}
+  .h-line{width:32px;height:1px;background:var(--bordeaux-light);}
+  .h-tag{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--bordeaux-light);font-weight:400;}
+  .hero-name{font-family:'Playfair Display',serif;font-size:clamp(3.8rem,7.5vw,6.5rem);font-weight:700;line-height:0.95;color:var(--warm-white);margin-bottom:0.5rem;}
+  .hero-name .first{display:block;font-weight:400;font-style:italic;}
+  .hero-name .last{display:block;color:var(--bordeaux-light);}
+  .hero-role{font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-weight:300;margin-bottom:2.8rem;margin-top:0.8rem;}
+  .hero-intro{font-size:0.97rem;line-height:1.85;font-weight:300;color:rgba(255,255,255,0.62);max-width:600px;margin-bottom:3rem;border-left:2px solid var(--bordeaux);padding-left:1.4rem;}
+  .hero-intro strong{color:rgba(255,255,255,0.9);font-weight:500;}
+  .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn-p{padding:0.9rem 2.2rem;background:var(--bordeaux-mid);color:#fff;font-weight:500;font-size:0.78rem;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;border:1px solid var(--bordeaux-mid);transition:background 0.2s,transform 0.2s;font-family:'IBM Plex Sans',sans-serif;}
+  .btn-p:hover{background:var(--bordeaux-light);transform:translateY(-1px);}
+  .btn-o{padding:0.9rem 2.2rem;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.65);font-size:0.78rem;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;transition:all 0.2s;font-family:'IBM Plex Sans',sans-serif;}
+  .btn-o:hover{border-color:var(--bordeaux-light);color:var(--bordeaux-light);}
+  .hero-stats{position:absolute;bottom:4.5rem;right:5rem;display:flex;gap:3.5rem;align-items:flex-end;}
+  .stat-div{width:1px;height:48px;background:rgba(255,255,255,0.08);}
+  .stat-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--bordeaux-light);line-height:1;}
+  .stat-label{font-size:0.64rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.32);margin-top:0.35rem;}
+
+  /* SECTION COMMONS */
+  section{padding:7.5rem 5rem;}
+  .s-eyebrow{display:flex;align-items:center;gap:0.9rem;margin-bottom:0.8rem;}
+  .s-line{width:24px;height:1px;background:var(--bordeaux);}
+  .s-tag{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--bordeaux);font-weight:400;}
+  .s-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:600;color:var(--charcoal);line-height:1.15;margin-bottom:0.9rem;}
+  .s-rule{width:40px;height:2px;background:var(--bordeaux-mid);margin-bottom:3rem;}
+  .s-intro{font-size:0.97rem;line-height:1.85;color:var(--text-mid);max-width:620px;margin-bottom:3.5rem;font-weight:300;}
+
+  /* PROJET */
+  #projet{background:var(--warm-white);}
+  .projet-grid{display:grid;grid-template-columns:1fr 400px;gap:5rem;align-items:start;}
+  .projet-body{font-size:0.97rem;line-height:1.9;color:var(--text-mid);font-weight:300;}
+  .projet-body p+p{margin-top:1.3rem;}
+  .projet-body strong{color:var(--charcoal);font-weight:500;}
+  .cert-banner{margin-top:2rem;display:flex;align-items:flex-start;gap:1rem;background:var(--bordeaux-pale);border-radius:3px;border-left:3px solid var(--bordeaux-mid);padding:1.2rem 1.4rem;}
+  .cert-icon{font-size:1.6rem;flex-shrink:0;margin-top:0.1rem;}
+  .cert-label{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bordeaux);font-weight:500;margin-bottom:0.25rem;}
+  .cert-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.25rem;}
+  .cert-desc{font-size:0.82rem;color:var(--text-mid);line-height:1.6;}
+  .projet-card{background:var(--charcoal);border-radius:3px;padding:2.5rem;position:relative;overflow:hidden;}
+  .projet-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--bordeaux),var(--bordeaux-light));}
+  .pc-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--bordeaux-light);margin-bottom:1.2rem;}
+  .pc-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:#fff;margin-bottom:1.2rem;line-height:1.3;}
+  .pc-body{font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.8;font-weight:300;}
+  .pc-body strong{color:rgba(255,255,255,0.85);font-weight:400;}
+  .tag-list{margin-top:1.8rem;display:flex;flex-wrap:wrap;gap:0.45rem;}
+  .tag{padding:0.28rem 0.75rem;font-size:0.65rem;letter-spacing:0.1em;border:1px solid rgba(192,57,74,0.4);color:var(--bordeaux-light);border-radius:2px;text-transform:uppercase;}
+
+  /* COMPÉTENCES */
+  #competences{background:var(--charcoal);}
+  #competences .s-title{color:var(--warm-white);}
+  #competences .s-tag,#competences .s-line{color:var(--bordeaux-light);}
+  #competences .s-line{background:var(--bordeaux-light);}
+  #competences .s-rule{background:var(--bordeaux-light);}
+  #competences .s-intro{color:rgba(255,255,255,0.45);}
+  .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+  .comp-card{background:var(--charcoal-mid);border-radius:3px;border:1px solid var(--border-dark);padding:2.2rem;position:relative;overflow:hidden;transition:transform 0.25s,border-color 0.25s;}
+  .comp-card:hover{transform:translateY(-3px);border-color:rgba(122,31,46,0.5);}
+  .comp-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--bordeaux-mid);}
+  .comp-num{position:absolute;top:1.5rem;right:1.8rem;font-family:'Playfair Display',serif;font-size:4rem;font-weight:700;color:rgba(122,31,46,0.07);line-height:1;pointer-events:none;}
+  .comp-icon{font-size:1.3rem;margin-bottom:1rem;}
+  .comp-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:#fff;margin-bottom:0.5rem;line-height:1.25;}
+  .comp-sub{font-size:0.68rem;color:var(--bordeaux-light);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.9rem;}
+  .comp-body{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.75;font-weight:300;}
+  .tosa-badge{display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.9rem;padding:0.28rem 0.75rem;border-radius:2px;background:rgba(192,57,74,0.1);border:1px solid rgba(192,57,74,0.3);font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bordeaux-light);}
+
+  /* TRACES */
+  #traces{background:var(--paper);}
+  .traces-nav{display:flex;gap:0.4rem;margin-bottom:3rem;flex-wrap:wrap;}
+  .tf{padding:0.48rem 1.1rem;border-radius:2px;cursor:pointer;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(122,31,46,0.2);background:transparent;color:var(--text-light);font-family:'IBM Plex Sans',sans-serif;transition:all 0.2s;}
+  .tf.active,.tf:hover{background:var(--charcoal);color:var(--bordeaux-light);border-color:var(--charcoal);}
+  .traces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+  .trace-card{background:var(--warm-white);border-radius:3px;border:1px solid rgba(122,31,46,0.1);padding:1.9rem;transition:transform 0.25s,box-shadow 0.25s;}
+  .trace-card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(28,28,30,0.08);}
+  .tb{display:inline-block;margin-bottom:1rem;padding:0.22rem 0.65rem;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;border-radius:2px;font-weight:500;}
+  .b-u{background:rgba(28,28,30,0.07);color:var(--charcoal-light);}
+  .b-p{background:rgba(122,31,46,0.1);color:var(--bordeaux);}
+  .b-pe{background:rgba(40,100,70,0.1);color:#2d6b4a;}
+  .b-r{background:rgba(60,80,140,0.1);color:#3a4e8c;}
+  .trace-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;line-height:1.25;}
+  .trace-ctx{font-size:0.72rem;color:var(--bordeaux);letter-spacing:0.04em;margin-bottom:0.9rem;}
+  .trace-body{font-size:0.84rem;color:var(--text-mid);line-height:1.78;font-weight:300;}
+  .trace-body strong{color:var(--text);font-weight:500;}
+  .trace-tags{margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.35rem;}
+  .tt{padding:0.18rem 0.55rem;font-size:0.62rem;border-radius:2px;background:rgba(28,28,30,0.05);color:var(--text-light);letter-spacing:0.05em;}
+
+  /* BILAN */
+  #bilan{background:var(--warm-white);}
+  .bilan-grid{display:grid;grid-template-columns:3fr 2fr;gap:5rem;align-items:start;}
+  .bilan-text{font-size:0.97rem;line-height:1.9;color:var(--text-mid);font-weight:300;}
+  .bilan-text p+p{margin-top:1.3rem;}
+  .bilan-text strong{color:var(--charcoal);font-weight:500;}
+  .bilan-tosa{margin-top:2rem;display:flex;align-items:flex-start;gap:0.9rem;background:var(--bordeaux-pale);border-left:3px solid var(--bordeaux-mid);border-radius:3px;padding:1.1rem 1.3rem;}
+  .bt-icon{font-size:1.4rem;flex-shrink:0;}
+  .bt-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--bordeaux);font-weight:500;margin-bottom:0.22rem;}
+  .bt-title{font-size:0.9rem;font-weight:500;color:var(--charcoal);margin-bottom:0.2rem;}
+  .bt-desc{font-size:0.8rem;color:var(--text-mid);line-height:1.6;}
+  .bilan-card{background:var(--charcoal);border-radius:3px;padding:2.2rem;border-top:3px solid var(--bordeaux-mid);}
+  .bc-title{font-family:'Playfair Display',serif;font-size:0.82rem;color:var(--bordeaux-light);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.6rem;}
+  .pi{display:flex;align-items:flex-start;gap:0.9rem;margin-bottom:1.2rem;}
+  .pi-dot{width:5px;height:5px;border-radius:50%;background:var(--bordeaux-light);margin-top:0.58rem;flex-shrink:0;}
+  .pi-text{font-size:0.84rem;color:rgba(255,255,255,0.55);line-height:1.65;font-weight:300;}
+  .pi-text strong{color:rgba(255,255,255,0.88);font-weight:500;}
+  .bilan-quote{margin-top:2rem;border-left:2px solid var(--bordeaux);padding-left:1.2rem;font-family:'Playfair Display',serif;font-size:0.97rem;font-style:italic;color:rgba(255,255,255,0.52);line-height:1.65;}
+  .bilan-quote cite{display:block;margin-top:0.7rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.67rem;font-style:normal;letter-spacing:0.12em;text-transform:uppercase;color:var(--bordeaux-light);}
+
+  /* CONTACT */
+  #contact{background:var(--charcoal);text-align:center;padding:6rem 5rem;}
+  .contact-inner{max-width:480px;margin:0 auto;}
+  #contact .s-title{color:var(--warm-white);}
+  #contact .s-tag{color:var(--bordeaux-light);}
+  #contact .s-line{background:var(--bordeaux-light);}
+  #contact .s-eyebrow{justify-content:center;}
+  .contact-sub{font-size:0.88rem;color:rgba(255,255,255,0.42);margin-bottom:2.5rem;line-height:1.7;font-weight:300;}
+  .contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+  .cl{display:flex;align-items:center;gap:0.5rem;padding:0.75rem 1.6rem;border:1px solid rgba(255,255,255,0.12);border-radius:2px;color:rgba(255,255,255,0.62);text-decoration:none;font-size:0.78rem;letter-spacing:0.06em;transition:all 0.2s;}
+  .cl:hover{background:var(--bordeaux-mid);color:#fff;border-color:var(--bordeaux-mid);}
+
+  footer{background:var(--charcoal);text-align:center;padding:1.5rem;font-size:0.67rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;border-top:1px solid rgba(122,31,46,0.2);}
+
+  /* ANIMATIONS */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.65s ease,transform 0.65s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+
+  /* RESPONSIVE */
+  @media(max-width:960px){
+    nav{padding:1rem 1.8rem;}
+    section{padding:5.5rem 1.8rem;}
+    #hero{padding:7rem 1.8rem 9rem;}
+    .hero-stats{position:static;margin-top:3.5rem;flex-wrap:wrap;}
+    .projet-grid,.bilan-grid{grid-template-columns:1fr;gap:2.5rem;}
+    .comp-grid{grid-template-columns:1fr;}
+    .traces-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:600px){
+    .traces-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Victor <span>PHAN</span></div>
+  <ul class="nav-links">
+    <li><a href="#projet">Projet</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#traces">Réalisations</a></li>
+    <li><a href="#bilan">Bilan</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><div class="h-line"></div><div class="h-tag">Portfolio professionnel · BUT TC 3 · IUT de Sceaux · 2024–2025</div></div>
+    <h1 class="hero-name">
+      <span class="first">Victor</span>
+      <span class="last">PHAN</span>
+    </h1>
+    <p class="hero-role">BUT Techniques de Commercialisation — Spécialité BDMRC</p>
+    <p class="hero-intro">
+      Étudiant en 3ème année de BUT TC, j'ai construit un profil à la croisée du commercial 
+      et de l'analytique lors de mon stage de 6 mois au sein du service 
+      <strong>Pilotage de la Performance Commerciale de la Société Générale</strong> 
+      (région Île-de-France Sud). Mon ambition : intégrer le 
+      <strong>Master Finance – Parcours Banque de l'IAE Paris Sorbonne</strong> 
+      pour exercer le métier de <strong>contrôleur de gestion</strong>.
+    </p>
+    <div class="hero-ctas">
+      <a href="#competences" class="btn-p">Mes compétences</a>
+      <a href="#traces" class="btn-o">Réalisations</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Mois de stage</div></div>
+    <div class="stat-div"></div>
+    <div class="stat"><div class="stat-num">15</div><div class="stat-label">Note tuteur /20</div></div>
+    <div class="stat-div"></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Ans de BUT TC</div></div>
+  </div>
+</section>
+
+<!-- PROJET -->
+<section id="projet">
+  <div class="s-eyebrow"><div class="s-line"></div><div class="s-tag">01 — Présentation</div></div>
+  <h2 class="s-title">Mon projet professionnel</h2>
+  <div class="s-rule"></div>
+  <div class="projet-grid reveal">
+    <div>
+      <div class="projet-body">
+        <p>Mon BUT Techniques de Commercialisation, spécialité <strong>Business Development et Management de la Relation Client</strong>, m'a permis de développer une culture à double entrée : commerciale et analytique. Dès mes premières expériences, c'est le versant chiffré — les tableaux de bord, les indicateurs de performance, la lecture des données financières — qui m'a le plus attiré.</p>
+        <p>Mon stage de 6 mois au sein du service <strong>Pilotage de la Performance Commerciale de la Société Générale</strong> a cristallisé ce projet : concevoir des outils de reporting, analyser des résultats commerciaux et formuler des recommandations stratégiques — c'est là que je me sens à ma place.</p>
+        <p>Mon objectif pour l'an prochain : intégrer le <strong>Master Finance, Parcours Banque de l'IAE Paris Sorbonne Business School</strong>, pour acquérir les fondamentaux du contrôle de gestion et du pilotage financier, et exercer le métier de <strong>contrôleur de gestion</strong> dans un grand groupe bancaire ou financier.</p>
+      </div>
+      <div class="cert-banner">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-label">Certification en cours · 2025</div>
+          <div class="cert-title">Certification TOSA — Microsoft Excel</div>
+          <div class="cert-desc">Pour anticiper les exigences du Master Finance et des futures expériences professionnelles (stage, alternance), je me forme activement en vue de l'obtention de la certification TOSA Excel — référence reconnue par les recruteurs pour attester d'une maîtrise avancée de l'outil. Un investissement personnel qui prolonge directement les compétences data développées lors de mon stage à la Société Générale.</div>
+        </div>
+      </div>
+    </div>
+    <div class="projet-card">
+      <div class="pc-label">Formation visée</div>
+      <div class="pc-title">Master Finance<br>Parcours Banque</div>
+      <div class="pc-body"><strong>IAE Paris Sorbonne Business School</strong><br><br>Formation axée sur les instruments financiers, le contrôle de gestion, l'analyse de risques et la gouvernance bancaire. Reconnue pour sa proximité avec le monde professionnel et ses débouchés dans les grandes institutions financières françaises et européennes.</div>
+      <div class="tag-list">
+        <span class="tag">Contrôle de gestion</span>
+        <span class="tag">Finance bancaire</span>
+        <span class="tag">Reporting</span>
+        <span class="tag">Analyse de risques</span>
+        <span class="tag">Pilotage financier</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <div class="s-eyebrow"><div class="s-line" style="background:var(--bordeaux-light);"></div><div class="s-tag" style="color:var(--bordeaux-light);">02 — Compétences</div></div>
+  <h2 class="s-title" style="color:var(--warm-white);">Compétences clés</h2>
+  <div class="s-rule" style="background:var(--bordeaux-light);margin-bottom:2rem;"></div>
+  <p class="s-intro" style="color:rgba(255,255,255,0.45);">Parmi les cinq compétences du parcours BDMRC, j'ai sélectionné celles qui sont les plus directement en lien avec mon projet d'intégration en Master Finance et le métier de contrôleur de gestion.</p>
+  <div class="comp-grid reveal">
+    <div class="comp-card">
+      <div class="comp-num">01</div>
+      <div class="comp-icon">📊</div>
+      <div class="comp-title">Analyser et piloter la performance commerciale</div>
+      <div class="comp-sub">Compétence de spécialité BDMRC</div>
+      <p class="comp-body">Construire des tableaux de bord pertinents, sélectionner les KPIs adaptés aux objectifs stratégiques et formuler des recommandations à partir de l'analyse des résultats. Compétence centrale du contrôleur de gestion.</p>
+    </div>
+    <div class="comp-card">
+      <div class="comp-num">02</div>
+      <div class="comp-icon">💡</div>
+      <div class="comp-title">Exploiter les données pour la prise de décision</div>
+      <div class="comp-sub">Analyse & outils digitaux</div>
+      <p class="comp-body">Maîtriser les outils d'extraction, de traitement et de visualisation de données : Excel avancé (TCD, RECHERCHEX, graphiques, automatisation). Transformer des données brutes en informations actionnables pour les équipes de direction.</p>
+      <div class="tosa-badge">📋 Certification TOSA Excel — en cours</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-num">03</div>
+      <div class="comp-icon">🏛️</div>
+      <div class="comp-title">Manager et piloter la stratégie d'entreprise</div>
+      <div class="comp-sub">Management stratégique & financier</div>
+      <p class="comp-body">Prendre des décisions stratégiques dans un environnement concurrentiel : politique de prix, gestion des ressources, rentabilité, trésorerie. Comprendre les interdépendances entre décisions opérationnelles et résultats financiers.</p>
+    </div>
+    <div class="comp-card">
+      <div class="comp-num">04</div>
+      <div class="comp-icon">🤝</div>
+      <div class="comp-title">Développer une relation client orientée satisfaction</div>
+      <div class="comp-sub">Relation client & qualité de service</div>
+      <p class="comp-body">Analyser la satisfaction client, identifier les axes d'amélioration et diffuser les bonnes pratiques au sein d'une équipe commerciale. La performance financière s'appuie sur une relation client solide et durable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRACES -->
+<section id="traces">
+  <div class="s-eyebrow"><div class="s-line"></div><div class="s-tag">03 — Réalisations</div></div>
+  <h2 class="s-title">Traces & réalisations</h2>
+  <div class="s-rule"></div>
+  <p class="s-intro">Chaque réalisation illustre concrètement les compétences développées tout au long de mon parcours — en contexte universitaire, professionnel et personnel.</p>
+  <div class="traces-nav">
+    <button class="tf active" onclick="filterTraces('all',this)">Toutes</button>
+    <button class="tf" onclick="filterTraces('univ',this)">Universitaire</button>
+    <button class="tf" onclick="filterTraces('pro',this)">Professionnel</button>
+    <button class="tf" onclick="filterTraces('perso',this)">Vie personnelle</button>
+    <button class="tf" onclick="filterTraces('reco',this)">Reconnaissance</button>
+  </div>
+  <div class="traces-grid reveal" id="tgrid">
+
+    <div class="trace-card" data-type="univ">
+      <span class="tb b-u">Universitaire</span>
+      <div class="trace-title">SAE BDMRC — Plan d'actions commercial et relationnel</div>
+      <div class="trace-ctx">Semestre 4 · IUT de Sceaux · 2024–2025</div>
+      <p class="trace-body">Dans le cadre de cette SAE, il s'agissait d'élaborer un plan d'actions commerciales à partir d'un bilan relationnel, en construisant un <strong>tableau de bord avec des indicateurs pertinents</strong>.<br><br>J'ai contribué à la construction du TDB, à l'analyse des résultats et à l'identification des axes de progression, en mobilisant les cours sur les KPIs commerciaux. Livrable présenté lors d'une soutenance orale de 20 minutes.<br><br><strong>Résultat :</strong> présentation appréciée pour la pertinence des indicateurs et la clarté du diagnostic stratégique.</p>
+      <div class="trace-tags"><span class="tt">Pilotage performance</span><span class="tt">Exploitation données</span></div>
+    </div>
+
+    <div class="trace-card" data-type="univ">
+      <span class="tb b-u">Universitaire</span>
+      <div class="trace-title">Business Game Parioca — Direction Financière</div>
+      <div class="trace-ctx">BUT TC · IUT de Sceaux · 2023–2024</div>
+      <p class="trace-body">Simulation de gestion d'entreprise en circuit fermé — j'ai tenu le rôle de <strong>Directeur Financier</strong> d'une société de e-commerce spécialisée dans les machines à café éco-responsables.<br><br>En charge du suivi des coûts, de la rentabilité et de la trésorerie, j'ai analysé les résultats comptables, arbitré entre investissement et endettement, et contribué au business plan stratégique.<br><br><strong>Résultat :</strong> rentabilité positive maintenue sur les trois périodes simulées, grâce à une politique de financement rigoureuse.</p>
+      <div class="trace-tags"><span class="tt">Stratégie d'entreprise</span><span class="tt">Pilotage financier</span></div>
+    </div>
+
+    <div class="trace-card" data-type="pro">
+      <span class="tb b-p">Professionnel</span>
+      <div class="trace-title">Dashboard satisfaction client — Société Générale</div>
+      <div class="trace-ctx">Stage · Pilotage de la performance commerciale · Paris IDF Sud · 2024–2025</div>
+      <p class="trace-body">Conception d'un <strong>fichier Excel avancé</strong> dédié au suivi de la satisfaction client : extraction de données, TCD, graphiques automatisés et formules RECHERCHEX.<br><br>Ce fichier a été intégré à la <strong>réunion commerciale hebdomadaire des directeurs de région</strong>, devenant un outil de pilotage régulier, adapté aux attentes des managers.<br><br><strong>Résultat :</strong> outil adopté et diffusé en réunion de direction, attestant de sa fiabilité opérationnelle.</p>
+      <div class="trace-tags"><span class="tt">Excel avancé</span><span class="tt">Satisfaction client</span><span class="tt">Reporting</span></div>
+    </div>
+
+    <div class="trace-card" data-type="pro">
+      <span class="tb b-p">Professionnel</span>
+      <div class="trace-title">Projet OptiRel — Dashboard & recommandations stratégiques</div>
+      <div class="trace-ctx">Stage · Société Générale · IDF Sud · 2024–2025</div>
+      <p class="trace-body">Extraction et traitement de <strong>données commerciales</strong> pour créer un dashboard Excel synthétisant les indicateurs financiers et relationnels clés de la région.<br><br>Analyse des écarts de performance entre agences, identification des leviers d'amélioration et formulation de <strong>recommandations concrètes</strong> présentées à l'équipe pilotage.<br><br><strong>Résultat :</strong> recommandations validées par mon maître de stage, jugées pertinentes et directement exploitables.</p>
+      <div class="trace-tags"><span class="tt">Analyse stratégique</span><span class="tt">Dashboard Excel</span><span class="tt">Pilotage performance</span></div>
+    </div>
+
+    <div class="trace-card" data-type="perso">
+      <span class="tb b-pe">Vie personnelle</span>
+      <div class="trace-title">Jiu-Jitsu Brésilien, voyages & ouverture culturelle</div>
+      <div class="trace-ctx">Engagement personnel · En continu</div>
+      <p class="trace-body">Je pratique le <strong>Jiu-Jitsu Brésilien (JJB)</strong>, sport qui m'a enseigné la rigueur, la persévérance et la capacité à analyser une situation pour adapter sa stratégie — qualités directement transférables dans un environnement professionnel exigeant.<br><br>Mes voyages et découvertes de nouvelles cultures m'ont forgé une <strong>ouverture d'esprit et une capacité d'adaptation</strong> essentielles dans le secteur bancaire international.<br><br><strong>Ce que cela révèle :</strong> discipline personnelle, curiosité intellectuelle et aptitude à sortir de ma zone de confort.</p>
+      <div class="trace-tags"><span class="tt">Rigueur</span><span class="tt">Adaptabilité</span><span class="tt">Ouverture culturelle</span></div>
+    </div>
+
+    <div class="trace-card" data-type="reco">
+      <span class="tb b-r">Reconnaissance</span>
+      <div class="trace-title">Évaluation tuteur entreprise — 15/20</div>
+      <div class="trace-ctx">Société Générale · Tuteur en entreprise · 2025</div>
+      <p class="trace-body">À mi-parcours de mon stage, mon tuteur m'a attribué la note de <strong>15/20 (« Bien »)</strong>, correspondant au profil d'un « bon élément, autonome et capable d'initiatives ».<br><br>L'appréciation souligne : une <strong>belle posture professionnelle</strong>, une intégration rapide, de la fiabilité et de la réactivité dans les missions, ainsi qu'une participation active aux reportings satisfaction client et aux travaux de pilotage commercial.<br><br><strong>Ce document atteste</strong> de ma capacité à m'inscrire dans un environnement professionnel exigeant dès mon premier stage long.</p>
+      <div class="trace-tags"><span class="tt">Posture professionnelle</span><span class="tt">Fiabilité</span><span class="tt">Toutes compétences</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BILAN -->
+<section id="bilan">
+  <div class="s-eyebrow"><div class="s-line"></div><div class="s-tag">04 — Synthèse</div></div>
+  <h2 class="s-title">Bilan de compétences</h2>
+  <div class="s-rule"></div>
+  <div class="bilan-grid reveal">
+    <div>
+      <div class="bilan-text">
+        <p>Au terme de ces trois années de BUT Techniques de Commercialisation, je dresse un bilan marqué par une évolution claire : d'étudiant en commerce généraliste à profil <strong>orienté données et performance financière</strong>. Chaque expérience m'a rapproché d'un positionnement que je revendique pleinement.</p>
+        <p>Mon stage à la <strong>Société Générale</strong> a été le moment de cristallisation de ce projet. Plongé dans les mécaniques du pilotage commercial d'un grand réseau bancaire, j'ai compris ce que signifie transformer des données en décisions stratégiques. Construire un outil de reporting qui atterrit en réunion de direction, c'est voir l'impact direct de son travail — c'est ce qui m'anime.</p>
+        <p>Le <strong>Business Game Parioca</strong>, où j'ai tenu le rôle de Directeur Financier, m'a permis de prendre de la hauteur sur les interdépendances entre décisions commerciales, coûts et rentabilité. Une expérience qui complète idéalement la dimension analytique de mon stage.</p>
+        <p>Pour anticiper les exigences du Master Finance et des futures missions en alternance, je me forme activement en vue de la <strong>certification TOSA Excel</strong>. Cette démarche volontaire témoigne de ma conviction que la maîtrise des outils data est une condition essentielle de l'efficacité d'un contrôleur de gestion moderne.</p>
+        <p>Mon profil se dessine autour de trois forces : la <strong>rigueur analytique</strong>, la <strong>capacité à produire des outils à impact opérationnel</strong> et une <strong>posture professionnelle confirmée</strong> — tout ce qu'attend un recruteur pour un poste de contrôleur de gestion junior.</p>
+      </div>
+      <div class="bilan-tosa">
+        <div class="bt-icon">📋</div>
+        <div>
+          <div class="bt-label">Montée en compétence · En cours</div>
+          <div class="bt-title">Certification TOSA Microsoft Excel</div>
+          <div class="bt-desc">Préparation active à la certification TOSA Excel pour valider et formaliser une maîtrise avancée de l'outil, en vue des exigences du Master Finance et des futurs recruteurs en contrôle de gestion et pilotage financier.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="bilan-card">
+        <div class="bc-title">Mon profil en synthèse</div>
+        <div class="pi"><div class="pi-dot"></div><div class="pi-text"><strong>Analyste de performance</strong> — construction et lecture de tableaux de bord commerciaux et financiers</div></div>
+        <div class="pi"><div class="pi-dot"></div><div class="pi-text"><strong>Expert Excel & données</strong> — TCD, RECHERCHEX, automatisation, dashboards · TOSA en cours</div></div>
+        <div class="pi"><div class="pi-dot"></div><div class="pi-text"><strong>Profil bancaire</strong> — 6 mois en immersion dans le pilotage commercial de la Société Générale</div></div>
+        <div class="pi"><div class="pi-dot"></div><div class="pi-text"><strong>Manager stratégique</strong> — expérience de direction financière en simulation de gestion réaliste</div></div>
+        <div class="pi"><div class="pi-dot"></div><div class="pi-text"><strong>Professionnel fiable</strong> — note 15/20, posture et réactivité reconnues par le tuteur entreprise</div></div>
+        <blockquote class="bilan-quote">
+          « Doté d'une belle posture professionnelle, Victor s'est parfaitement bien intégré. Il apprend vite et assure les travaux confiés avec fiabilité et réactivité. »
+          <cite>— Tuteur entreprise, Société Générale IDF Sud, 2025</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <div class="s-eyebrow" style="justify-content:center;"><div class="s-line" style="background:var(--bordeaux-light);"></div><div class="s-tag" style="color:var(--bordeaux-light);">05 — Contact</div></div>
+    <h2 class="s-title" style="color:var(--warm-white);margin-top:0.5rem;">Entrons en contact</h2>
+    <p class="contact-sub">Candidat au Master Finance – Parcours Banque<br>IAE Paris Sorbonne Business School<br>Disponible pour un échange à partir de juin 2025</p>
+    <div class="contact-links">
+      <a href="mailto:victor.phan@etudiant.iut-sceaux.fr" class="cl">✉️ Email</a>
+      <a href="https://linkedin.com/in/victor-phan" target="_blank" class="cl">💼 LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2025 Victor PHAN — Portfolio BUT TC 3 · IUT de Sceaux, Paris-Saclay</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*80); io.unobserve(e.target); } });
+  },{threshold:0.08});
+  reveals.forEach(el=>io.observe(el));
+
+  function filterTraces(type,btn){
+    document.querySelectorAll('.tf').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.trace-card').forEach(c=>{ c.style.display=(type==='all'||c.dataset.type===type)?'':'none'; });
+  }
+
+  const sections=document.querySelectorAll('section[id]');
+  const navLinks=document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll',()=>{
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id;});
+    navLinks.forEach(a=>{ a.style.color=a.getAttribute('href')==='#'+cur?'var(--bordeaux-light)':''; });
+  });
+</script>
+</body>
+</html>
